@@ -1,4 +1,4 @@
-export default [
+module.exports = [
   'https://www.basketball-reference.com/players/z/zelleco01.html',
   'https://www.basketball-reference.com/players/z/zellety01.html',
   'https://www.basketball-reference.com/players/z/zimmest01.html',
