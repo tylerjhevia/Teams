@@ -1,11 +1,14 @@
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Welcome.css';
 
 const Welcome = () => {
   return (
     <div className="welcome-container">
       <h1>TEAMS</h1>
-      <button className="start-button">Build a team</button>
+      <NavLink to="/home" className="start-button">
+        Build a team
+      </NavLink>
     </div>
   );
 };
