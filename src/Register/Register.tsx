@@ -5,9 +5,9 @@ export interface RegisterState {
   password: String;
 }
 
-export default class Register extends React.Component<RegisterState, any> {
+export default class Register extends React.Component<any, RegisterState> {
   constructor() {
-    super();
+    super({});
     this.state = {
       username: '',
       password: ''
@@ -17,9 +17,24 @@ export default class Register extends React.Component<RegisterState, any> {
   render() {
     return (
       <div className="register-container">
-        <form className="register-form" method="post" />
-        <input className="register-username" placeholder="Enter username" />
-        <input className="register-password" placeholder="Enter password" />
+        <h1>Create an account</h1>
+        <form
+          className="register-form"
+          method="post"
+          action="http://localhost:3001/api/v1/users"
+        >
+          <input
+            className="register-username"
+            placeholder="Enter username"
+            onChange={(e: any) => this.setState({ username: e.target.value })}
+          />
+          <input
+            className="register-password"
+            placeholder="Enter password"
+            onChange={(e: any) => this.setState({ username: e.target.value })}
+          />
+          <button className="register-button">Create account</button>
+        </form>
       </div>
     );
   }
