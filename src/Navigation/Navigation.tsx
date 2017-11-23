@@ -12,6 +12,9 @@ const Navigation = () => {
         <NavLink to="/" className="welcome-link">
           Welcome
         </NavLink>
+        <NavLink to="/register" className="register-link">
+          Register
+        </NavLink>
       </header>
     </div>
   );
