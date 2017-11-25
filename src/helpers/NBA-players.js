@@ -1,4 +1,4 @@
-[
+const players = [
   'Abrines, Alex',
   'Acy, Quincy',
   'Adams, Steven',
@@ -498,3 +498,5 @@
   'Zizic, Ante',
   'Zubac, Ivica'
 ];
+
+export default players;

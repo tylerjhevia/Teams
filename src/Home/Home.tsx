@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './Home.css';
+import players from '../helpers/NBA-players.js';
 
 export default class Home extends React.Component<{}, {}> {
   constructor(props: any) {
@@ -9,7 +10,14 @@ export default class Home extends React.Component<{}, {}> {
   render() {
     return (
       <div className="home-container">
-        <p>Home page</p>
+        <h1>Home page</h1>
+        <div className="players">
+          {players.map(player =>
+            <p>
+              {player}
+            </p>
+          )}
+        </div>
       </div>
     );
   }
