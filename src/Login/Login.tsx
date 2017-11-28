@@ -4,6 +4,7 @@ import LoginContainer from '../containers/LoginContainer';
 export interface LoginState {
   username: String;
   password: String;
+  disabled: true | false;
 }
 
 class Login extends React.Component<any, LoginState> {
@@ -11,7 +12,8 @@ class Login extends React.Component<any, LoginState> {
     super({});
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      disabled: true
     };
     this.retrieveUser = this.retrieveUser.bind(this);
   }
@@ -34,17 +36,34 @@ class Login extends React.Component<any, LoginState> {
           <input
             className="login-username"
             placeholder="Enter username"
-            onChange={(e: any) => this.setState({ username: e.target.value })}
+            onChange={(e: any) => {
+              this.setState({ username: e.target.value });
+              if (e.target.value === '' || this.state.password === '') {
+                this.setState({ disabled: true });
+              } else {
+                this.setState({ disabled: false });
+              }
+            }}
           />
           <input
             className="login-password"
             placeholder="Enter password"
-            onChange={(e: any) => this.setState({ password: e.target.value })}
+            onChange={(e: any) => {
+              this.setState({ password: e.target.value });
+              if (e.target.value === '' || this.state.username === '') {
+                this.setState({ disabled: true });
+              } else {
+                this.setState({ disabled: false });
+              }
+            }}
             type="password"
           />
           <button
             className="login-button"
-            onClick={(e: any) => this.retrieveUser(e)}
+            disabled={this.state.disabled}
+            onClick={(e: any) => {
+              this.retrieveUser(e);
+            }}
           >
             Log in
           </button>
