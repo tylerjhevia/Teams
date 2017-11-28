@@ -15,6 +15,9 @@ const Navigation = () => {
         <NavLink to="/register" className="register-link">
           Register
         </NavLink>
+        <NavLink to="/login" className="login-link">
+          Login
+        </NavLink>
       </header>
     </div>
   );
