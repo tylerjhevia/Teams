@@ -12,6 +12,17 @@ export default class Login extends React.Component<any, LoginState> {
       username: '',
       password: ''
     };
+    this.retrieveUser = this.retrieveUser.bind(this);
+  }
+
+  retrieveUser(e: any) {
+    e.preventDefault();
+    const { username } = this.state;
+    console.log(username);
+    fetch(`http://localhost:3001/api/v1/users/${username}`)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
   }
 
   render() {
@@ -30,7 +41,12 @@ export default class Login extends React.Component<any, LoginState> {
             onChange={(e: any) => this.setState({ password: e.target.value })}
             type="password"
           />
-          <button className="login-button">Log in</button>
+          <button
+            className="login-button"
+            onClick={(e: any) => this.retrieveUser(e)}
+          >
+            Log in
+          </button>
         </form>
       </div>
     );
