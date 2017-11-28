@@ -13,7 +13,7 @@ export default class Home extends React.Component<{}, {}> {
         <h1>Home page</h1>
         <div className="players">
           {players.map(player =>
-            <p>
+            <p key={player}>
               {player}
             </p>
           )}

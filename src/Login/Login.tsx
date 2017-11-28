@@ -1,11 +1,12 @@
 import * as React from 'react';
+import LoginContainer from '../containers/LoginContainer';
 
 export interface LoginState {
   username: String;
   password: String;
 }
 
-export default class Login extends React.Component<any, LoginState> {
+class Login extends React.Component<any, LoginState> {
   constructor() {
     super({});
     this.state = {
@@ -21,7 +22,7 @@ export default class Login extends React.Component<any, LoginState> {
     console.log(username);
     fetch(`http://localhost:3001/api/v1/users/${username}`)
       .then(response => response.json())
-      .then(response => console.log(response))
+      .then(response => this.props.storeCurrentUser(response))
       .catch(error => console.log(error));
   }
 
@@ -52,3 +53,5 @@ export default class Login extends React.Component<any, LoginState> {
     );
   }
 }
+
+export default LoginContainer(Login);
