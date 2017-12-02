@@ -21,11 +21,11 @@ class Login extends React.Component<any, LoginState> {
   retrieveUser(e: any) {
     e.preventDefault();
     const { username } = this.state;
-    console.log(username);
     fetch(`http://localhost:3001/api/v1/users/${username}`)
       .then(response => response.json())
       .then(response => this.props.storeCurrentUser(response))
       .catch(error => console.log(error));
+    this.setState({ username: '', password: '' });
   }
 
   render() {
