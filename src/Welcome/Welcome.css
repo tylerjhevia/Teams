@@ -1,17 +1,89 @@
 .welcome-container {
   align-items: center;
+  background-color: #598392;
+  color: #eff6e0;
   display: flex;
   flex-direction: column;
   height: 100vh;
   justify-content: center;
 }
 
-.start-button {
+.login-link {
   height: 3vw;
   width: 50vw;
   outline: none;
 }
 
-.start-button:hover {
+.login-link:hover,
+.register-link:hover {
+  color: #aec3b0;
+  cursor: pointer;
+}
+
+.login-container {
+  background-color: #01161e;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  justify-content: space-around;
+  position: absolute;
+  width: 80%;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  justify-content: space-between;
+}
+
+.login-form input,
+.login-button {
+  align-self: center;
+  font-size: 20px;
+  height: 4vw;
+  width: 60%;
+}
+
+.login-button:disabled {
+  color: #eff6e1;
+}
+
+.login-button:enabled:hover {
+  background-color: #aec3b0;
+  cursor: pointer;
+}
+
+.register-container {
+  background-color: #01161e;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  justify-content: space-around;
+  position: absolute;
+  width: 80%;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  justify-content: space-between;
+}
+
+.register-form input,
+.register-button {
+  align-self: center;
+  font-size: 20px;
+  height: 4vw;
+  width: 60%;
+}
+
+.register-button:disabled {
+  color: #eff6e1;
+}
+
+.register-button:enabled:hover {
+  background-color: #aec3b0;
   cursor: pointer;
 }
