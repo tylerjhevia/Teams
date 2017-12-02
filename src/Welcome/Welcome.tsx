@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { NavLink } from 'react-router-dom';
 import './Welcome.css';
 
 interface WelcomeState {
@@ -20,12 +19,13 @@ export default class Welcome extends React.Component<{}, WelcomeState> {
     return (
       <div className="welcome-container">
         <h1>TEAMS</h1>
-        <NavLink to="/login" className="login-link">
+        <p
+          className="login-link"
+          onClick={() => this.setState({ login: true })}
+        >
           I have an account
-        </NavLink>
-        <NavLink to="/register" className="register-link">
-          I do not have an account
-        </NavLink>
+        </p>
+        <p className="register-link">I do not have an account</p>
       </div>
     );
   }

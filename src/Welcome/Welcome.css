@@ -1,5 +1,7 @@
 .welcome-container {
   align-items: center;
+  background-color: #598392;
+  color: #eff6e0;
   display: flex;
   flex-direction: column;
   height: 100vh;
