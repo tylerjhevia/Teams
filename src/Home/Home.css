@@ -1,0 +1,15 @@
+.players {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.players p {
+  width: 30%;
+}
+
+.players p:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
