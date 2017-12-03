@@ -87,3 +87,8 @@
   background-color: #aec3b0;
   cursor: pointer;
 }
+
+.back-button {
+  bottom: 10px;
+  position: absolute;
+}

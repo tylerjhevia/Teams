@@ -27,10 +27,26 @@ export default class Welcome extends React.Component<{}, WelcomeState> {
     }
   }
 
+  showBackButton() {
+    if (this.state.login || this.state.register) {
+      return (
+        <button
+          onClick={() => this.setState({ login: false, register: false })}
+          className="back-button"
+        >
+          Go back
+        </button>
+      );
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return (
       <div className="welcome-container">
         <h1>TEAMS</h1>
+
         <p
           className="login-link"
           onClick={() => this.setState({ login: true })}
@@ -44,6 +60,7 @@ export default class Welcome extends React.Component<{}, WelcomeState> {
           I do not have an account
         </p>
         {this.showPopup()}
+        {this.showBackButton()}
       </div>
     );
   }
