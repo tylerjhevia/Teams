@@ -1,4 +1,5 @@
 import * as React from 'react';
+import LoginContainer from '../containers/LoginContainer';
 
 export interface RegisterState {
   username: String;
@@ -6,7 +7,7 @@ export interface RegisterState {
   disabled: true | false;
 }
 
-export default class Register extends React.Component<any, RegisterState> {
+class Register extends React.Component<any, RegisterState> {
   constructor() {
     super({});
     this.state = {
@@ -30,7 +31,7 @@ export default class Register extends React.Component<any, RegisterState> {
       }
     })
       .then(response => response.json())
-      .then(parsedResponse => console.log(parsedResponse))
+      .then(parsedResponse => this.props.storeCurrentUser(parsedResponse))
       .catch(error => console.log({ error }));
   }
 
@@ -76,3 +77,5 @@ export default class Register extends React.Component<any, RegisterState> {
     );
   }
 }
+
+export default LoginContainer(Register);
