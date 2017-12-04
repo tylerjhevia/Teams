@@ -1,5 +1,6 @@
 import * as React from 'react';
 import TeamsContainer from '../containers/TeamsContainer';
+import { NavLink } from 'react-router-dom';
 import './Teams.css';
 
 interface TeamsProps {
@@ -24,6 +25,7 @@ const Teams = (props: TeamsProps) => {
       <ul className="teams-list">
         <li>Team 1</li>
       </ul>
+      <NavLink to="/home">Draft a team</NavLink>
     </div>
   );
 };
