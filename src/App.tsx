@@ -3,8 +3,6 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import Welcome from './Welcome/Welcome';
 import Home from './Home/Home';
-import Register from './Register/Register';
-import Login from './Login/Login';
 
 class App extends React.Component<any, any> {
   render() {
@@ -12,8 +10,6 @@ class App extends React.Component<any, any> {
       <div className="App">
         <Route exact path="/" component={Welcome} />
         <Route exact path="/home" component={Home} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/Login" component={Login} />
       </div>
     );
   }
