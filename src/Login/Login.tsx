@@ -20,9 +20,9 @@ class Login extends React.Component<any, LoginState> {
 
   retrieveUser(e: any) {
     e.preventDefault();
-    const { username } = this.state;
+    const { username, password } = this.state;
 
-    fetch(`http://localhost:3001/api/v1/users/${username}`)
+    fetch(`http://localhost:3001/api/v1/users/${username}/${password}`)
       .then(response => response.json())
       .then(response => this.props.storeCurrentUser(response))
       .catch(error => console.log(error));
