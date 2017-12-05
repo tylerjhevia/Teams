@@ -20,7 +20,6 @@ class App extends React.Component<any, any> {
   }
 
   render() {
-    console.log('props', this.props.currentUser);
     return (
       <div className="App">
         {this.checkIfUserIsLoggedIn()}

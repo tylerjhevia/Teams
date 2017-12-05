@@ -7,7 +7,7 @@ interface TeamsProps {
   currentUser: CurrentUser;
 }
 
-interface CurrentUser {
+export interface CurrentUser {
   id: Number;
   username: String;
   password: String;

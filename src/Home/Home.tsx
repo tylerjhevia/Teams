@@ -2,14 +2,27 @@ import * as React from 'react';
 import './Home.css';
 import CurrentSelection from '../CurrentSelection/CurrentSelection';
 import TeamsContainer from '../containers/TeamsContainer';
+import Player from '../Player/Player';
 import players from '../helpers/NBA-players.js';
 
-class Home extends React.Component<{}, {}> {
+interface HomeState {
+  selected: Array<String>;
+}
+
+class Home extends React.Component<{}, HomeState> {
   constructor(props: any) {
     super(props);
+    this.state = {
+      selected: []
+    };
   }
 
-  addPlayerToTeam(player: string) {}
+  addPlayerToTeam(player: string) {
+    let team = this.state.selected;
+    team.push(player);
+
+    return this.setState({ selected: team });
+  }
 
   render() {
     return (
@@ -17,12 +30,14 @@ class Home extends React.Component<{}, {}> {
         <h1>Home page</h1>
         <div className="players">
           {players.map(player =>
-            <p key={player} onClick={() => this.addPlayerToTeam(player)}>
-              {player}
-            </p>
+            <Player
+              key={player}
+              name={player}
+              onClick={() => this.addPlayerToTeam(player)}
+            />
           )}
         </div>
-        <CurrentSelection />
+        <CurrentSelection team={this.state.selected} />
       </div>
     );
   }
