@@ -3,9 +3,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 30px;
+  margin-bottom: 200px;
 }
 
 .players p {
+  margin: 5px;
   width: 30%;
 }
 

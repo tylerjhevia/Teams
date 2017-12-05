@@ -15,12 +15,11 @@ class App extends React.Component<any, any> {
     if (this.props.currentUser.id) {
       return <Redirect to="/teams" />;
     } else {
-      return null;
+      return <Redirect to="/" />;
     }
   }
 
   render() {
-    console.log('props', this.props.currentUser);
     return (
       <div className="App">
         {this.checkIfUserIsLoggedIn()}

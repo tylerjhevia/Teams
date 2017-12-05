@@ -1,30 +1,44 @@
 import * as React from 'react';
 import './Home.css';
-import Teams from '../Teams/Teams';
+import CurrentSelection from '../CurrentSelection/CurrentSelection';
+import TeamsContainer from '../containers/TeamsContainer';
+import Player from '../Player/Player';
 import players from '../helpers/NBA-players.js';
 
-export default class Home extends React.Component<{}, {}> {
+interface HomeState {
+  selected: Array<String>;
+}
+
+class Home extends React.Component<{}, HomeState> {
   constructor(props: any) {
     super(props);
+    this.state = {
+      selected: []
+    };
+    this.addPlayerToTeam = this.addPlayerToTeam.bind(this);
   }
 
   addPlayerToTeam(player: string) {
-    console.log('player', player);
+    this.setState({ selected: [...this.state.selected, player] });
   }
 
   render() {
     return (
       <div className="home-container">
         <h1>Home page</h1>
-        <Teams />
         <div className="players">
           {players.map(player =>
-            <p key={player} onClick={() => this.addPlayerToTeam(player)}>
-              {player}
-            </p>
+            <Player
+              key={player}
+              name={player}
+              addToTeam={() => this.addPlayerToTeam(player)}
+            />
           )}
         </div>
+        <CurrentSelection team={this.state.selected} />
       </div>
     );
   }
 }
+
+export default TeamsContainer(Home);
