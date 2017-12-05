@@ -1,0 +1,7 @@
+.current-selection {
+  background-color: #eef5db;
+  bottom: 0;
+  height: 150px;
+  position: fixed;
+  width: 100%;
+}
