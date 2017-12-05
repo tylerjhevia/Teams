@@ -15,13 +15,11 @@ class Home extends React.Component<{}, HomeState> {
     this.state = {
       selected: []
     };
+    this.addPlayerToTeam = this.addPlayerToTeam.bind(this);
   }
 
   addPlayerToTeam(player: string) {
-    let team = this.state.selected;
-    team.push(player);
-
-    return this.setState({ selected: team });
+    this.setState({ selected: [...this.state.selected, player] });
   }
 
   render() {
@@ -33,7 +31,7 @@ class Home extends React.Component<{}, HomeState> {
             <Player
               key={player}
               name={player}
-              onClick={() => this.addPlayerToTeam(player)}
+              addToTeam={() => this.addPlayerToTeam(player)}
             />
           )}
         </div>

@@ -15,12 +15,13 @@ class CurrentSelection extends React.Component<CurrentSelectionProps, {}> {
   }
 
   render() {
+    console.log('cs props', this.props);
     return (
       <section className="current-selection">
         <h3>Current selection:</h3>
-        <ol className="selected-players">
+        <section className="selected-players">
           {this.props.team.map(player => <Player name={player} />)}
-        </ol>
+        </section>
       </section>
     );
   }
