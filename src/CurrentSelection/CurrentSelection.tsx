@@ -22,6 +22,7 @@ class CurrentSelection extends React.Component<CurrentSelectionProps, {}> {
         <section className="selected-players">
           {this.props.team.map(player => <Player name={player} />)}
         </section>
+        <button className="create-team-button">Create Team</button>
       </section>
     );
   }
