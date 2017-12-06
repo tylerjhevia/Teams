@@ -14,14 +14,49 @@ class CurrentSelection extends React.Component<CurrentSelectionProps, {}> {
     super(props);
   }
 
+  postNewTeam() {
+    const { team, currentUser } = this.props;
+    const player_1 = team[0];
+    const player_2 = team[1];
+    const player_3 = team[2];
+    const player_4 = team[3];
+    const player_5 = team[4];
+
+    const newTeam = {
+      team_name: 'PLACEHOLDER',
+      player_1: player_1,
+      player_2: player_2,
+      player_3: player_3,
+      player_4: player_4,
+      player_5: player_5,
+      user_id: currentUser.id
+    };
+
+    if (this.props.team.length === 5) {
+      fetch('http://localhost:3001/api/v1/teams', {
+        method: 'POST',
+        body: JSON.stringify(newTeam),
+        headers: { 'Content-Type': 'application/json' }
+      })
+        .then(response => response.json())
+        .then(parsedResponse => console.log(parsedResponse))
+        .catch(error => console.log({ error }));
+    }
+  }
+
   render() {
-    console.log('cs props', this.props);
     return (
       <section className="current-selection">
         <h3>Current selection:</h3>
         <section className="selected-players">
-          {this.props.team.map(player => <Player name={player} />)}
+          {this.props.team.map((player, i) => <Player key={i} name={player} />)}
         </section>
+        <button
+          className="create-team-button"
+          onClick={() => this.postNewTeam()}
+        >
+          Create Team
+        </button>
       </section>
     );
   }

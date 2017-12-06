@@ -19,7 +19,9 @@ class Home extends React.Component<{}, HomeState> {
   }
 
   addPlayerToTeam(player: string) {
-    this.setState({ selected: [...this.state.selected, player] });
+    if (this.state.selected.length < 5) {
+      this.setState({ selected: [...this.state.selected, player] });
+    }
   }
 
   render() {
