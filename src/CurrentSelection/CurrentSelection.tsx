@@ -9,9 +9,19 @@ interface CurrentSelectionProps {
   currentUser: CurrentUser;
 }
 
-class CurrentSelection extends React.Component<CurrentSelectionProps, {}> {
+interface CurrentSelectionState {
+  teamName: String;
+}
+
+class CurrentSelection extends React.Component<
+  CurrentSelectionProps,
+  CurrentSelectionState
+> {
   constructor(props: CurrentSelectionProps) {
     super(props);
+    this.state = {
+      teamName: ''
+    };
   }
 
   postNewTeam() {
@@ -23,7 +33,7 @@ class CurrentSelection extends React.Component<CurrentSelectionProps, {}> {
     const player_5 = team[4];
 
     const newTeam = {
-      team_name: 'PLACEHOLDER',
+      team_name: this.state.teamName,
       player_1: player_1,
       player_2: player_2,
       player_3: player_3,
@@ -48,6 +58,11 @@ class CurrentSelection extends React.Component<CurrentSelectionProps, {}> {
     return (
       <section className="current-selection">
         <h3>Current selection:</h3>
+        <input
+          className="team-name"
+          placeholder="Enter team name"
+          onChange={(e: any) => this.setState({ teamName: e.target.value })}
+        />
         <section className="selected-players">
           {this.props.team.map((player, i) => <Player key={i} name={player} />)}
         </section>
