@@ -17,7 +17,6 @@ nightmare
   })
   .end()
   .then(res => {
-    console.log('one', res);
     let output = JSON.stringify(res);
     fs.writeFile(`./NBA-players.js`, output, 'utf8', err => {
       if (err) {

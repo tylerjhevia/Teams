@@ -16,6 +16,7 @@ class Home extends React.Component<{}, HomeState> {
       selected: []
     };
     this.addPlayerToTeam = this.addPlayerToTeam.bind(this);
+    this.removePlayerFromTeam = this.removePlayerFromTeam.bind(this);
   }
 
   addPlayerToTeam(player: string) {
@@ -24,9 +25,16 @@ class Home extends React.Component<{}, HomeState> {
     }
   }
 
+  removePlayerFromTeam(player: String) {
+    this.setState({
+      selected: this.state.selected.filter(teamMember => teamMember !== player)
+    });
+  }
+
   render() {
     return (
       <div className="home-container">
+        =
         <h1>Home page</h1>
         <div className="players">
           {players.map(player =>
@@ -34,10 +42,14 @@ class Home extends React.Component<{}, HomeState> {
               key={player}
               name={player}
               addToTeam={() => this.addPlayerToTeam(player)}
+              inSelection={false}
             />
           )}
         </div>
-        <CurrentSelection team={this.state.selected} />
+        <CurrentSelection
+          team={this.state.selected}
+          removePlayerFromTeam={this.removePlayerFromTeam}
+        />
       </div>
     );
   }
