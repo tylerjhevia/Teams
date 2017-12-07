@@ -7,6 +7,7 @@ import { CurrentUser } from '../Teams/Teams';
 interface CurrentSelectionProps {
   team: Array<String>;
   currentUser: CurrentUser;
+  removePlayerFromTeam: Function;
 }
 
 interface CurrentSelectionState {
@@ -64,7 +65,14 @@ class CurrentSelection extends React.Component<
           onChange={(e: any) => this.setState({ teamName: e.target.value })}
         />
         <section className="selected-players">
-          {this.props.team.map((player, i) => <Player key={i} name={player} />)}
+          {this.props.team.map((player, i) =>
+            <Player
+              key={i}
+              removePlayerFromTeam={this.props.removePlayerFromTeam}
+              name={player}
+              inSelection={true}
+            />
+          )}
         </section>
         <button
           className="create-team-button"
