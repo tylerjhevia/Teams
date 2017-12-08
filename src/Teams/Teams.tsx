@@ -16,6 +16,37 @@ export interface CurrentUser {
 }
 
 const Teams = (props: TeamsProps) => {
+  const fetchUserTeams: any = () => {
+    return fetch(`http://localhost:3001/api/v1/teams/${props.currentUser.id}`)
+      .then(response => response.json())
+      .then((parsedResponse: any) => {
+        return parsedResponse.map((team: any) => {
+          return (
+            <li className="existing-team">
+              <h5>
+                {team.team_name}
+              </h5>
+              <p>
+                {team.player_1}
+              </p>
+              <p>
+                {team.player_2}
+              </p>
+              <p>
+                {team.player_3}
+              </p>
+              <p>
+                {team.player_4}
+              </p>
+              <p>
+                {team.player_5}
+              </p>
+            </li>
+          );
+        });
+      })
+      .catch(error => console.log(error));
+  };
   return (
     <div className="teams-container">
       <p className="current-user">
@@ -23,7 +54,7 @@ const Teams = (props: TeamsProps) => {
       </p>
       <h1>My teams</h1>
       <ul className="teams-list">
-        <li>Team 1</li>
+        {fetchUserTeams()}
       </ul>
       <NavLink to="/home">Draft a team</NavLink>
     </div>
