@@ -5,6 +5,7 @@ export interface LoginState {
   username: String;
   password: String;
   disabled: true | false;
+  error: String;
 }
 
 class Login extends React.Component<any, LoginState> {
@@ -13,7 +14,8 @@ class Login extends React.Component<any, LoginState> {
     this.state = {
       username: '',
       password: '',
-      disabled: true
+      disabled: true,
+      error: ''
     };
     this.retrieveUser = this.retrieveUser.bind(this);
   }
@@ -25,7 +27,7 @@ class Login extends React.Component<any, LoginState> {
     fetch(`http://localhost:3001/api/v1/users/${username}/${password}`)
       .then(response => response.json())
       .then(response => this.props.storeCurrentUser(response))
-      .catch(error => console.log(error));
+      .catch(error => console.log('error', error));
     this.setState({ username: '', password: '' });
   }
 
