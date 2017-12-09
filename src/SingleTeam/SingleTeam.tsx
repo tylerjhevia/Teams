@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './SingleTeam.css';
 
 interface SingleTeamProps {
   team: Team;
@@ -19,7 +20,7 @@ const SingleTeam = (props: SingleTeamProps) => {
   const { team } = props;
   return (
     <li className="existing-team">
-      <h5>
+      <h5 className="team-name">
         {team.team_name}
       </h5>
       <p>

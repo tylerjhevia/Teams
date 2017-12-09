@@ -23,19 +23,30 @@ interface TeamsState {
 class Teams extends React.Component<TeamsProps, TeamsState> {
   constructor(props: any) {
     super(props);
+    this.state = {
+      userTeams: []
+    };
   }
 
-  fetchUserTeams: any = () => {
+  componentDidMount() {
+    this.fetchUserTeams();
+  }
+
+  fetchUserTeams() {
     fetch(`http://localhost:3001/api/v1/teams/${this.props.currentUser.id}`)
       .then(response => response.json())
       .then((parsedResponse: any) => {
-        parsedResponse.map((team: any) => {
-          console.log('team', team);
-          return <SingleTeam team={team} />;
-        });
+        return this.setState({ userTeams: parsedResponse });
       })
       .catch(error => console.log(error));
-  };
+  }
+
+  renderTeams() {
+    console.log('hey');
+    return this.state.userTeams.map((team: any) => {
+      return <SingleTeam team={team} />;
+    });
+  }
   render() {
     return (
       <div className="teams-container">
@@ -44,7 +55,7 @@ class Teams extends React.Component<TeamsProps, TeamsState> {
         </p>
         <h1>My teams</h1>
         <ul className="teams-list">
-          {this.fetchUserTeams()}
+          {this.renderTeams()}
         </ul>
         <NavLink to="/home">Draft a team</NavLink>
       </div>

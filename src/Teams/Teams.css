@@ -29,6 +29,7 @@ h1 {
   height: 50%;
   list-style-type: none;
   margin: 30px;
+  overflow: scroll;
   padding: 10px;
   width: 50%;
 }

@@ -1,0 +1,13 @@
+.existing-team {
+  border: 1px solid black;
+  font-size: 12px;
+}
+
+.team-name {
+  margin: 10px;
+  font-size: 14px;
+}
+
+p {
+  margin: 5px;
+}
