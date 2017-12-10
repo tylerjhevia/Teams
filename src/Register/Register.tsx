@@ -31,7 +31,7 @@ class Register extends React.Component<any, RegisterState> {
       }
     })
       .then(response => response.json())
-      .then(parsedResponse => this.props.storeCurrentUser(parsedResponse))
+      .then(response => this.props.storeCurrentUser(response))
       .catch(error => console.log({ error }));
   }
 
