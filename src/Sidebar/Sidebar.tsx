@@ -10,12 +10,21 @@ interface SidebarProps {
 
 const Sidebar = (props: SidebarProps) => {
   console.log('sidebar props', props);
+  const { currentUser, storeCurrentUser } = props;
   return (
     <section className="sidebar-container">
       <p className="current-user">
-        Logged in as: {props.currentUser.username}
+        Logged in as: {currentUser.username}
       </p>
-      <p className="logout">Log out</p>
+      <p
+        className="logout"
+        onClick={() => {
+          storeCurrentUser({});
+          localStorage.clear();
+        }}
+      >
+        Log out
+      </p>
     </section>
   );
 };
