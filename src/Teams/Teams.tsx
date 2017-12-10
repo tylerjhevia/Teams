@@ -42,16 +42,17 @@ class Teams extends React.Component<TeamsProps, TeamsState> {
   }
 
   renderTeams() {
-    return this.state.userTeams.map((team: any) => {
-      return <SingleTeam team={team} />;
-    });
+    if (this.state.userTeams.length) {
+      return this.state.userTeams.map((team: any) => {
+        return <SingleTeam team={team} />;
+      });
+    } else {
+      return null;
+    }
   }
   render() {
     return (
       <div className="teams-container">
-        <p className="current-user">
-          Logged in as: {this.props.currentUser.username}
-        </p>
         <h1>My teams</h1>
         <ul className="teams-list">
           {this.renderTeams()}

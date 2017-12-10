@@ -1,0 +1,14 @@
+.sidebar-container {
+  background-color: blue;
+  color: white;
+  height: 100vh;
+  position: fixed;
+  right: 10px;
+  text-align: left;
+  width: 15vw;
+}
+
+.logout:hover {
+  color: red;
+  cursor: pointer;
+}
