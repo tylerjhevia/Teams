@@ -30,12 +30,11 @@ class Login extends React.Component<any, LoginState> {
       .then((response: any) => {
         if (response.error) {
           this.setState({
-            error: 'Username or password is invalid',
-            username: '',
-            password: ''
+            error: 'Username or password is invalid'
           });
         } else {
           this.props.storeCurrentUser(response);
+          localStorage.setItem('current user', JSON.stringify(response));
         }
       })
       .catch(error => console.log(error));

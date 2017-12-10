@@ -42,7 +42,6 @@ class Teams extends React.Component<TeamsProps, TeamsState> {
   }
 
   renderTeams() {
-    console.log('hey');
     return this.state.userTeams.map((team: any) => {
       return <SingleTeam team={team} />;
     });

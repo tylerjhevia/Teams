@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import TeamsContainer from './containers/TeamsContainer';
+import AppContainer from './containers/AppContainer';
 import Teams from './Teams/Teams';
 import './App.css';
 import Welcome from './Welcome/Welcome';
@@ -9,6 +9,14 @@ import Home from './Home/Home';
 class App extends React.Component<any, any> {
   constructor(props: Object) {
     super({});
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem('current user')) {
+      this.props.storeCurrentUser(
+        JSON.parse(localStorage.getItem('current user') || '{}')
+      );
+    }
   }
 
   checkIfUserIsLoggedIn() {
@@ -31,4 +39,4 @@ class App extends React.Component<any, any> {
   }
 }
 
-export default TeamsContainer(App);
+export default AppContainer(App);
