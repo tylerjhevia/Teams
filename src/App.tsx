@@ -5,6 +5,7 @@ import Teams from './Teams/Teams';
 import './App.css';
 import Welcome from './Welcome/Welcome';
 import Home from './Home/Home';
+import Sidebar from './Sidebar/Sidebar';
 
 class App extends React.Component<any, any> {
   constructor(props: Object) {
@@ -30,6 +31,7 @@ class App extends React.Component<any, any> {
   render() {
     return (
       <div className="App">
+        <Sidebar />
         {this.checkIfUserIsLoggedIn()}
         <Route exact path="/" component={Welcome} />
         <Route exact path="/home" component={Home} />
