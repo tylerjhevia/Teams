@@ -9,8 +9,8 @@ interface SidebarProps {
 }
 
 const Sidebar = (props: SidebarProps) => {
-  console.log('sidebar props', props);
   const { currentUser, storeCurrentUser } = props;
+
   return (
     <section className="sidebar-container">
       <p className="current-user">

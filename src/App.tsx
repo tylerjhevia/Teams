@@ -31,7 +31,7 @@ class App extends React.Component<any, any> {
   render() {
     return (
       <div className="App">
-        <Sidebar />
+        {this.props.currentUser.id ? <Sidebar /> : null}
         {this.checkIfUserIsLoggedIn()}
         <Route exact path="/" component={Welcome} />
         <Route exact path="/home" component={Home} />
