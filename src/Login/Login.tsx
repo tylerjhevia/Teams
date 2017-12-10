@@ -1,10 +1,12 @@
 import * as React from 'react';
 import LoginContainer from '../containers/LoginContainer';
+import './Login.css';
 
 export interface LoginState {
   username: String;
   password: String;
   disabled: true | false;
+  error: String;
 }
 
 class Login extends React.Component<any, LoginState> {
@@ -13,7 +15,8 @@ class Login extends React.Component<any, LoginState> {
     this.state = {
       username: '',
       password: '',
-      disabled: true
+      disabled: true,
+      error: ''
     };
     this.retrieveUser = this.retrieveUser.bind(this);
   }
@@ -24,15 +27,27 @@ class Login extends React.Component<any, LoginState> {
 
     fetch(`http://localhost:3001/api/v1/users/${username}/${password}`)
       .then(response => response.json())
-      .then(response => this.props.storeCurrentUser(response))
+      .then((response: any) => {
+        if (response.error) {
+          this.setState({
+            error: 'Username or password is invalid',
+            username: '',
+            password: ''
+          });
+        } else {
+          this.props.storeCurrentUser(response);
+        }
+      })
       .catch(error => console.log(error));
-    this.setState({ username: '', password: '' });
   }
 
   render() {
     return (
       <div className="login-container">
         <h1>Log in to your account</h1>
+        <p className="error-message">
+          {this.state.error}
+        </p>
         <form className="login-form">
           <input
             className="login-username"
