@@ -1,5 +1,6 @@
 import * as React from 'react';
 import LoginContainer from '../containers/LoginContainer';
+import './Login.css';
 
 export interface LoginState {
   username: String;
@@ -26,15 +27,27 @@ class Login extends React.Component<any, LoginState> {
 
     fetch(`http://localhost:3001/api/v1/users/${username}/${password}`)
       .then(response => response.json())
-      .then(response => this.props.storeCurrentUser(response))
-      .catch(error => console.log('error', error));
-    this.setState({ username: '', password: '' });
+      .then((response: any) => {
+        if (response.error) {
+          this.setState({
+            error: 'Username or password is invalid',
+            username: '',
+            password: ''
+          });
+        } else {
+          this.props.storeCurrentUser(response);
+        }
+      })
+      .catch(error => console.log(error));
   }
 
   render() {
     return (
       <div className="login-container">
         <h1>Log in to your account</h1>
+        <p className="error-message">
+          {this.state.error}
+        </p>
         <form className="login-form">
           <input
             className="login-username"
