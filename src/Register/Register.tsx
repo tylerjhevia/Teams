@@ -31,7 +31,10 @@ class Register extends React.Component<any, RegisterState> {
       }
     })
       .then(response => response.json())
-      .then(response => this.props.storeCurrentUser(response))
+      .then((response: any) => {
+        this.props.storeCurrentUser(response);
+        localStorage.setItem('current user', JSON.stringify(response));
+      })
       .catch(error => console.log({ error }));
   }
 
