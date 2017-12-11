@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './Home.css';
 import CurrentSelection from '../CurrentSelection/CurrentSelection';
-import TeamsContainer from '../containers/TeamsContainer';
+import TeamsContainer from '../Teams/TeamsContainer';
 import Player from '../Player/Player';
 import players from '../helpers/NBA-players.js';
 

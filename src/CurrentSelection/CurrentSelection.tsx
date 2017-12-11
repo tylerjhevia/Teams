@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './CurrentSelection.css';
-import TeamsContainer from '../containers/TeamsContainer';
+import TeamsContainer from '../Teams/TeamsContainer';
 import Player from '../Player/Player';
 import { CurrentUser } from '../Teams/Teams';
 
