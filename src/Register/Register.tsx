@@ -1,5 +1,5 @@
 import * as React from 'react';
-import LoginContainer from '../containers/LoginContainer';
+import LoginContainer from '../Login/LoginContainer';
 
 export interface RegisterState {
   username: String;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TeamsContainer from '../containers/TeamsContainer';
+import TeamsContainer from './TeamsContainer';
 import SingleTeam from '../SingleTeam/SingleTeam';
 import { NavLink } from 'react-router-dom';
 import './Teams.css';

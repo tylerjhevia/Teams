@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import AppContainer from './containers/AppContainer';
 import Teams from './Teams/Teams';
 import './App.css';
 import Welcome from './Welcome/Welcome';
 import Home from './Home/Home';
 import Sidebar from './Sidebar/Sidebar';
+import AppContainer from './AppContainer';
 
 class App extends React.Component<any, any> {
   constructor(props: Object) {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import LoginContainer from '../containers/LoginContainer';
+import LoginContainer from './LoginContainer';
 import './Login.css';
 
 export interface LoginState {
