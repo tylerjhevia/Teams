@@ -7,9 +7,13 @@ export interface RegisterState {
   disabled: true | false;
 }
 
-class Register extends React.Component<any, RegisterState> {
-  constructor() {
-    super({});
+interface RegisterProps {
+  storeCurrentUser: Function;
+}
+
+class Register extends React.Component<RegisterProps, RegisterState> {
+  constructor(props: any) {
+    super(props);
     this.state = {
       username: '',
       password: '',
@@ -18,7 +22,7 @@ class Register extends React.Component<any, RegisterState> {
     this.createUser = this.createUser.bind(this);
   }
 
-  createUser(e: any) {
+  createUser(e: any): void {
     e.preventDefault();
     const { username, password } = this.state;
     const user = { username: username, password: password };
