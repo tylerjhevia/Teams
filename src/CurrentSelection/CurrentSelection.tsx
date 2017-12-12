@@ -25,7 +25,7 @@ class CurrentSelection extends React.Component<
     };
   }
 
-  postNewTeam() {
+  postNewTeam(): void {
     const { team, currentUser } = this.props;
     const player_1 = team[0];
     const player_2 = team[1];
@@ -76,7 +76,7 @@ class CurrentSelection extends React.Component<
         </section>
         <button
           className="create-team-button"
-          onClick={() => this.postNewTeam()}
+          onClick={(): void => this.postNewTeam()}
         >
           Create Team
         </button>

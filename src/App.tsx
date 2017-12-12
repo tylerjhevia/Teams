@@ -19,7 +19,6 @@ class App extends React.Component<AppProps, {}> {
   }
 
   componentDidMount() {
-    console.log('app props', this.props);
     if (localStorage.getItem('current user')) {
       this.props.storeCurrentUser(
         JSON.parse(localStorage.getItem('current user') || '{}')

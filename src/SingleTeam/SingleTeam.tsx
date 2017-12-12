@@ -16,7 +16,6 @@ interface Team {
 }
 
 const SingleTeam = (props: SingleTeamProps) => {
-  console.log('single props', props);
   const { team } = props;
   return (
     <li className="existing-team">
