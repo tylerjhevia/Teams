@@ -3,10 +3,10 @@ import LoginContainer from './LoginContainer';
 import './Login.css';
 
 export interface LoginState {
-  username: String;
-  password: String;
+  username: string;
+  password: string;
   disabled: true | false;
-  error: String;
+  error: string;
 }
 
 export interface LoginProps {

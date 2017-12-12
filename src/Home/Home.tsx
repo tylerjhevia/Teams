@@ -7,7 +7,7 @@ import { CurrentUser } from '../Teams/Teams';
 import players from '../helpers/NBA-players.js';
 
 interface HomeState {
-  selected: Array<String>;
+  selected: Array<string>;
 }
 
 interface HomeProps {
@@ -30,7 +30,7 @@ class Home extends React.Component<HomeProps, HomeState> {
     }
   }
 
-  removePlayerFromTeam(player: String): void {
+  removePlayerFromTeam(player: string): void {
     this.setState({
       selected: this.state.selected.filter(teamMember => teamMember !== player)
     });

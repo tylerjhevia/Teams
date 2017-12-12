@@ -4,8 +4,8 @@ import Register from '../Register/Register';
 import './Welcome.css';
 
 interface WelcomeState {
-  login: Boolean;
-  register: Boolean;
+  login: boolean;
+  register: boolean;
 }
 
 export default class Welcome extends React.Component<{}, WelcomeState> {

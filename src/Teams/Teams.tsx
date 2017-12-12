@@ -9,11 +9,11 @@ interface TeamsProps {
 }
 
 export interface CurrentUser {
-  id: Number;
-  username: String;
-  password: String;
-  created_at: String;
-  updated_at: String;
+  id: number;
+  username: string;
+  password: string;
+  created_at: string;
+  updated_at: string;
 }
 
 interface TeamsState {

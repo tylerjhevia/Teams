@@ -2,8 +2,8 @@ import * as React from 'react';
 import LoginContainer from '../Login/LoginContainer';
 
 export interface RegisterState {
-  username: String;
-  password: String;
+  username: string;
+  password: string;
   disabled: true | false;
 }
 

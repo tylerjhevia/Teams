@@ -5,13 +5,13 @@ import Player from '../Player/Player';
 import { CurrentUser } from '../Teams/Teams';
 
 interface CurrentSelectionProps {
-  team: Array<String>;
+  team: Array<string>;
   currentUser: CurrentUser;
   removePlayerFromTeam: Function;
 }
 
 interface CurrentSelectionState {
-  teamName: String;
+  teamName: string;
 }
 
 class CurrentSelection extends React.Component<

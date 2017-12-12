@@ -7,12 +7,12 @@ interface SingleTeamProps {
 
 interface Team {
   user_id: Number;
-  team_name: String;
-  player_1: String;
-  player_2: String;
-  player_3: String;
-  player_4: String;
-  player_5: String;
+  team_name: string;
+  player_1: string;
+  player_2: string;
+  player_3: string;
+  player_4: string;
+  player_5: string;
 }
 
 const SingleTeam = (props: SingleTeamProps) => {
