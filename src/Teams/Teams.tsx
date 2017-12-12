@@ -9,11 +9,11 @@ interface TeamsProps {
 }
 
 export interface CurrentUser {
-  id: Number;
-  username: String;
-  password: String;
-  created_at: String;
-  updated_at: String;
+  id: number;
+  username: string;
+  password: string;
+  created_at: string;
+  updated_at: string;
 }
 
 interface TeamsState {
@@ -32,7 +32,7 @@ class Teams extends React.Component<TeamsProps, TeamsState> {
     this.fetchUserTeams();
   }
 
-  fetchUserTeams() {
+  fetchUserTeams(): void {
     fetch(`http://localhost:3001/api/v1/teams/${this.props.currentUser.id}`)
       .then(response => response.json())
       .then((parsedResponse: any) => {
@@ -41,7 +41,7 @@ class Teams extends React.Component<TeamsProps, TeamsState> {
       .catch(error => console.log(error));
   }
 
-  renderTeams() {
+  renderTeams(): JSX.Element[] | null {
     if (this.state.userTeams.length) {
       return this.state.userTeams.map((team: any) => {
         return <SingleTeam team={team} />;

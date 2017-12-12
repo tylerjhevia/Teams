@@ -3,15 +3,19 @@ import LoginContainer from './LoginContainer';
 import './Login.css';
 
 export interface LoginState {
-  username: String;
-  password: String;
+  username: string;
+  password: string;
   disabled: true | false;
-  error: String;
+  error: string;
 }
 
-class Login extends React.Component<any, LoginState> {
-  constructor() {
-    super({});
+export interface LoginProps {
+  storeCurrentUser: Function;
+}
+
+class Login extends React.Component<LoginProps, LoginState> {
+  constructor(props: any) {
+    super(props);
     this.state = {
       username: '',
       password: '',
@@ -21,7 +25,7 @@ class Login extends React.Component<any, LoginState> {
     this.retrieveUser = this.retrieveUser.bind(this);
   }
 
-  retrieveUser(e: any) {
+  retrieveUser(e: any): void {
     e.preventDefault();
     const { username, password } = this.state;
 

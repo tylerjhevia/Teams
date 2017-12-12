@@ -6,10 +6,16 @@ import Welcome from './Welcome/Welcome';
 import Home from './Home/Home';
 import Sidebar from './Sidebar/Sidebar';
 import AppContainer from './AppContainer';
+import { CurrentUser } from './Teams/Teams';
 
-class App extends React.Component<any, any> {
-  constructor(props: Object) {
-    super({});
+interface AppProps {
+  currentUser: CurrentUser;
+  storeCurrentUser: Function;
+}
+
+class App extends React.Component<AppProps, {}> {
+  constructor(props: any) {
+    super(props);
   }
 
   componentDidMount() {

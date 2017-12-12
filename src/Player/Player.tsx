@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const addOrRemovePlayer = (props: any) => {
+const addOrRemovePlayer = (props: any): void => {
   if (props.addToTeam) {
     props.addToTeam(props.name);
   } else {

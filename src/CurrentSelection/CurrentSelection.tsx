@@ -5,13 +5,13 @@ import Player from '../Player/Player';
 import { CurrentUser } from '../Teams/Teams';
 
 interface CurrentSelectionProps {
-  team: Array<String>;
+  team: Array<string>;
   currentUser: CurrentUser;
   removePlayerFromTeam: Function;
 }
 
 interface CurrentSelectionState {
-  teamName: String;
+  teamName: string;
 }
 
 class CurrentSelection extends React.Component<
@@ -25,7 +25,7 @@ class CurrentSelection extends React.Component<
     };
   }
 
-  postNewTeam() {
+  postNewTeam(): void {
     const { team, currentUser } = this.props;
     const player_1 = team[0];
     const player_2 = team[1];
@@ -76,7 +76,7 @@ class CurrentSelection extends React.Component<
         </section>
         <button
           className="create-team-button"
-          onClick={() => this.postNewTeam()}
+          onClick={(): void => this.postNewTeam()}
         >
           Create Team
         </button>

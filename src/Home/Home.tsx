@@ -3,13 +3,18 @@ import './Home.css';
 import CurrentSelection from '../CurrentSelection/CurrentSelection';
 import TeamsContainer from '../Teams/TeamsContainer';
 import Player from '../Player/Player';
+import { CurrentUser } from '../Teams/Teams';
 import players from '../helpers/NBA-players.js';
 
 interface HomeState {
-  selected: Array<String>;
+  selected: Array<string>;
 }
 
-class Home extends React.Component<{}, HomeState> {
+interface HomeProps {
+  currentUser: CurrentUser;
+}
+
+class Home extends React.Component<HomeProps, HomeState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -19,13 +24,13 @@ class Home extends React.Component<{}, HomeState> {
     this.removePlayerFromTeam = this.removePlayerFromTeam.bind(this);
   }
 
-  addPlayerToTeam(player: string) {
+  addPlayerToTeam(player: string): void {
     if (this.state.selected.length < 5) {
       this.setState({ selected: [...this.state.selected, player] });
     }
   }
 
-  removePlayerFromTeam(player: String) {
+  removePlayerFromTeam(player: string): void {
     this.setState({
       selected: this.state.selected.filter(teamMember => teamMember !== player)
     });
