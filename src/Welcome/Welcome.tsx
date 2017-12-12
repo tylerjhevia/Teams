@@ -17,7 +17,7 @@ export default class Welcome extends React.Component<{}, WelcomeState> {
     };
   }
 
-  showPopup() {
+  showPopup(): JSX.Element | null {
     if (this.state.login === true) {
       return <Login />;
     } else if (this.state.register === true) {
@@ -27,7 +27,7 @@ export default class Welcome extends React.Component<{}, WelcomeState> {
     }
   }
 
-  showBackButton() {
+  showBackButton(): JSX.Element | null {
     if (this.state.login || this.state.register) {
       return (
         <button
@@ -49,7 +49,7 @@ export default class Welcome extends React.Component<{}, WelcomeState> {
 
         <p
           className="login-link"
-          onClick={() => this.setState({ login: true })}
+          onClick={(): void => this.setState({ login: true })}
         >
           I have an account
         </p>
