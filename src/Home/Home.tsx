@@ -24,20 +24,19 @@ class Home extends React.Component<HomeProps, HomeState> {
     this.removePlayerFromTeam = this.removePlayerFromTeam.bind(this);
   }
 
-  addPlayerToTeam(player: string) {
+  addPlayerToTeam(player: string): void {
     if (this.state.selected.length < 5) {
       this.setState({ selected: [...this.state.selected, player] });
     }
   }
 
-  removePlayerFromTeam(player: String) {
+  removePlayerFromTeam(player: String): void {
     this.setState({
       selected: this.state.selected.filter(teamMember => teamMember !== player)
     });
   }
 
   render() {
-    console.log('Home props', this.props);
     return (
       <div className="home-container">
         =
