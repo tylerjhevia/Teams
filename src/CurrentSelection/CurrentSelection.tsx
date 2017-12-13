@@ -12,6 +12,17 @@ interface CurrentSelectionProps {
 
 interface CurrentSelectionState {
   teamName: string;
+  error: string;
+}
+
+interface Team {
+  team_name: string;
+  player_1: string;
+  player_2: string;
+  player_3: string;
+  player_4: string;
+  player_5: string;
+  user_id: number;
 }
 
 class CurrentSelection extends React.Component<
@@ -21,11 +32,12 @@ class CurrentSelection extends React.Component<
   constructor(props: CurrentSelectionProps) {
     super(props);
     this.state = {
-      teamName: ''
+      teamName: '',
+      error: ''
     };
   }
 
-  postNewTeam(): void {
+  postNewTeam(): Promise<void> | void {
     const { team, currentUser } = this.props;
     const player_1 = team[0];
     const player_2 = team[1];
@@ -43,22 +55,39 @@ class CurrentSelection extends React.Component<
       user_id: currentUser.id
     };
 
-    if (this.props.team.length === 5) {
-      fetch('http://localhost:3001/api/v1/teams', {
+    if (this.checkIfValidTeam(newTeam)) {
+      this.setState({ error: '' });
+      return fetch('http://localhost:3001/api/v1/teams', {
         method: 'POST',
         body: JSON.stringify(newTeam),
         headers: { 'Content-Type': 'application/json' }
       })
         .then(response => response.json())
-        .then(parsedResponse => console.log(parsedResponse))
+        .then(parsedResponse => console.log('ok', parsedResponse))
         .catch(error => console.log({ error }));
+    } else {
+      this.setState({ error: 'Missing field' });
     }
+  }
+
+  checkIfValidTeam(team: Team): boolean {
+    let teamKeys = Object.keys(team);
+
+    for (let i = 0; i < teamKeys.length; i++) {
+      if (!team[teamKeys[i]]) {
+        return false;
+      }
+    }
+    return true;
   }
 
   render() {
     return (
       <section className="current-selection">
         <h3>Current selection:</h3>
+        <p className="error-text">
+          {this.state.error}
+        </p>
         <input
           className="team-name"
           placeholder="Enter team name"
@@ -76,7 +105,7 @@ class CurrentSelection extends React.Component<
         </section>
         <button
           className="create-team-button"
-          onClick={(): void => this.postNewTeam()}
+          onClick={(): void | Promise<void> => this.postNewTeam()}
         >
           Create Team
         </button>
