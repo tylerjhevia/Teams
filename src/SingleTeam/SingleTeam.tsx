@@ -6,7 +6,10 @@ interface SingleTeamProps {
 }
 
 interface Team {
-  user_id: Number;
+  id: number;
+  created_at: string;
+  updated_at: string;
+  user_id: number;
   team_name: string;
   player_1: string;
   player_2: string;
@@ -14,6 +17,10 @@ interface Team {
   player_4: string;
   player_5: string;
 }
+
+const deleteTeam = (team: Team): void => {
+  console.log(team.id);
+};
 
 const SingleTeam = (props: SingleTeamProps) => {
   const { team } = props;
@@ -37,6 +44,9 @@ const SingleTeam = (props: SingleTeamProps) => {
       <p>
         {team.player_5}
       </p>
+      <button className="delete-button" onClick={() => deleteTeam(team)}>
+        Delete team
+      </button>
     </li>
   );
 };

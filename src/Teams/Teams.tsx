@@ -44,7 +44,7 @@ class Teams extends React.Component<TeamsProps, TeamsState> {
   renderTeams(): JSX.Element[] | null {
     if (this.state.userTeams.length) {
       return this.state.userTeams.map((team: any) => {
-        return <SingleTeam team={team} />;
+        return <SingleTeam team={team} key={team.id} />;
       });
     } else {
       return null;
