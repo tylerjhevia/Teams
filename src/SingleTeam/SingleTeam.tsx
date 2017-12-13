@@ -18,8 +18,12 @@ interface Team {
   player_5: string;
 }
 
-const deleteTeam = (team: Team): void => {
-  console.log(team.id);
+const deleteTeam = (id: number): Promise<Response> => {
+  return fetch(`http://localhost:3001/api/v1/teams/${id}`, {
+    method: 'DELETE',
+    body: null,
+    headers: { 'Content-type': 'application/json' }
+  });
 };
 
 const SingleTeam = (props: SingleTeamProps) => {
@@ -44,7 +48,7 @@ const SingleTeam = (props: SingleTeamProps) => {
       <p>
         {team.player_5}
       </p>
-      <button className="delete-button" onClick={() => deleteTeam(team)}>
+      <button className="delete-button" onClick={() => deleteTeam(team.id)}>
         Delete team
       </button>
     </li>
