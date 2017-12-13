@@ -12,6 +12,7 @@ interface CurrentSelectionProps {
 
 interface CurrentSelectionState {
   teamName: string;
+  error: string;
 }
 
 interface Team {
@@ -31,7 +32,8 @@ class CurrentSelection extends React.Component<
   constructor(props: CurrentSelectionProps) {
     super(props);
     this.state = {
-      teamName: ''
+      teamName: '',
+      error: ''
     };
   }
 
@@ -53,7 +55,8 @@ class CurrentSelection extends React.Component<
       user_id: currentUser.id
     };
 
-    if (this.props.team.length === 5) {
+    if (this.checkIfValidTeam(newTeam)) {
+      this.setState({ error: '' });
       return fetch('http://localhost:3001/api/v1/teams', {
         method: 'POST',
         body: JSON.stringify(newTeam),
@@ -62,15 +65,29 @@ class CurrentSelection extends React.Component<
         .then(response => response.json())
         .then(parsedResponse => console.log('ok', parsedResponse))
         .catch(error => console.log({ error }));
+    } else {
+      this.setState({ error: 'Missing field' });
     }
   }
 
-  checkIfValidTeam(team: Team) {}
+  checkIfValidTeam(team: Team): boolean {
+    let teamKeys = Object.keys(team);
+
+    for (let i = 0; i < teamKeys.length; i++) {
+      if (!team[teamKeys[i]]) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   render() {
     return (
       <section className="current-selection">
         <h3>Current selection:</h3>
+        <p className="error-text">
+          {this.state.error}
+        </p>
         <input
           className="team-name"
           placeholder="Enter team name"

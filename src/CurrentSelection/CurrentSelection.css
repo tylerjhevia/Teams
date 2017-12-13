@@ -2,6 +2,11 @@
   background-color: #eef5db;
   bottom: 0;
   height: 200px;
+  overflow: scroll;
   position: fixed;
   width: 100%;
+}
+
+.error-text {
+  color: red;
 }
