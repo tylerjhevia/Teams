@@ -26,6 +26,7 @@ class Teams extends React.Component<TeamsProps, TeamsState> {
     this.state = {
       userTeams: []
     };
+    this.fetchUserTeams = this.fetchUserTeams.bind(this);
   }
 
   componentDidMount() {
@@ -44,7 +45,13 @@ class Teams extends React.Component<TeamsProps, TeamsState> {
   renderTeams(): JSX.Element[] | null {
     if (this.state.userTeams.length) {
       return this.state.userTeams.map((team: any) => {
-        return <SingleTeam team={team} key={team.id} />;
+        return (
+          <SingleTeam
+            team={team}
+            key={team.id}
+            fetchUserTeams={this.fetchUserTeams}
+          />
+        );
       });
     } else {
       return null;
