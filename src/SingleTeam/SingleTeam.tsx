@@ -3,6 +3,7 @@ import './SingleTeam.css';
 
 interface SingleTeamProps {
   team: Team;
+  fetchUserTeams: Function;
 }
 
 interface Team {
@@ -48,7 +49,10 @@ const SingleTeam = (props: SingleTeamProps) => {
       <p>
         {team.player_5}
       </p>
-      <button className="delete-button" onClick={() => deleteTeam(team.id)}>
+      <button
+        className="delete-button"
+        onClick={() => deleteTeam(team.id).then(() => props.fetchUserTeams())}
+      >
         Delete team
       </button>
     </li>
