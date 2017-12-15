@@ -90,7 +90,7 @@ class CurrentSelection extends React.Component<
         </p>
         <input
           className="team-name"
-          placeholder="Enter team name"
+          placeholder="Enter team name..."
           onChange={(e: any) => this.setState({ teamName: e.target.value })}
         />
         <section className="selected-players">
