@@ -1,16 +1,27 @@
 .current-selection {
   align-items: center;
+  animation: 1s slidein;
   background-color: rgba(50, 50, 50, 0.6);
   bottom: 0;
   color: white;
   display: flex;
   flex-direction: column;
   font-weight: bold;
-  height: 200px;
+  height: 250px;
   justify-content: center;
-  overflow: scroll;
+  margin: 0 auto;
   position: fixed;
-  width: 100%;
+  transition: 0.5s ease-in;
+  width: 50%;
+}
+
+@keyframes slidein {
+  from {
+    margin-bottom: -250px;
+  }
+  to {
+    margin-bottom: 0;
+  }
 }
 
 .error-text {
@@ -36,6 +47,7 @@
 .create-team-button {
   background-color: rgba(255, 255, 255, 1);
   border: none;
+  font-size: 16px;
   height: 25px;
   outline: none;
   width: 20%;
