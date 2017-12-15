@@ -39,7 +39,6 @@ class Home extends React.Component<HomeProps, HomeState> {
   render() {
     return (
       <div className="home-container">
-        =
         <h1>Home page</h1>
         <div className="players">
           {players.map(player =>

@@ -1,7 +1,13 @@
 .current-selection {
-  background-color: #eef5db;
+  align-items: center;
+  background-color: rgba(50, 50, 50, 0.6);
   bottom: 0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
   height: 200px;
+  justify-content: center;
   overflow: scroll;
   position: fixed;
   width: 100%;
@@ -9,4 +15,34 @@
 
 .error-text {
   color: red;
+}
+
+.team-name {
+  background: none;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  outline: none;
+  text-indent: 5px;
+  width: 40%;
+}
+
+.team-name::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, .9);
+}
+
+.create-team-button {
+  background-color: rgba(255, 255, 255, 1);
+  border: none;
+  height: 25px;
+  outline: none;
+  width: 20%;
+}
+
+.create-team-button:hover {
+  background-color: blue;
+  color: white;
+  cursor: pointer;
 }
