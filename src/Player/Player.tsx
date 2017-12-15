@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Player.css';
 
 const addOrRemovePlayer = (props: any): void => {
   if (props.addToTeam) {
