@@ -8,6 +8,7 @@ import players from '../helpers/NBA-players.js';
 
 interface HomeState {
   selected: Array<string>;
+  search: string;
 }
 
 interface HomeProps {
@@ -18,7 +19,8 @@ class Home extends React.Component<HomeProps, HomeState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      selected: []
+      selected: [],
+      search: ''
     };
     this.addPlayerToTeam = this.addPlayerToTeam.bind(this);
     this.removePlayerFromTeam = this.removePlayerFromTeam.bind(this);
@@ -36,19 +38,36 @@ class Home extends React.Component<HomeProps, HomeState> {
     });
   }
 
+  filterPlayers(players: Array<string>) {
+    const { search } = this.state;
+
+    let results = players.filter(player =>
+      player.toLowerCase().includes(search.toLowerCase())
+    );
+
+    return results.map(player =>
+      <Player
+        key={player}
+        name={player}
+        addToTeam={() => this.addPlayerToTeam(player)}
+        inSelection={false}
+      />
+    );
+  }
+
   render() {
     return (
       <div className="home-container">
         <h1>Home page</h1>
+        <input
+          className="search"
+          placeholder="Search for a player"
+          onChange={(e: any) => {
+            this.setState({ search: e.target.value });
+          }}
+        />
         <div className="players">
-          {players.map(player =>
-            <Player
-              key={player}
-              name={player}
-              addToTeam={() => this.addPlayerToTeam(player)}
-              inSelection={false}
-            />
-          )}
+          {this.filterPlayers(players)}
         </div>
         <CurrentSelection
           team={this.state.selected}
