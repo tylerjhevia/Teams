@@ -38,6 +38,23 @@ class Home extends React.Component<HomeProps, HomeState> {
     });
   }
 
+  filterPlayers(players: Array<string>) {
+    const { search } = this.state;
+
+    let results = players.filter(player =>
+      player.toLowerCase().includes(search.toLowerCase())
+    );
+
+    return results.map(player =>
+      <Player
+        key={player}
+        name={player}
+        addToTeam={() => this.addPlayerToTeam(player)}
+        inSelection={false}
+      />
+    );
+  }
+
   render() {
     return (
       <div className="home-container">
@@ -45,17 +62,12 @@ class Home extends React.Component<HomeProps, HomeState> {
         <input
           className="search"
           placeholder="Search for a player"
-          onChange={(e: any) => this.setState({ search: e.target.value })}
+          onChange={(e: any) => {
+            this.setState({ search: e.target.value });
+          }}
         />
         <div className="players">
-          {players.map(player =>
-            <Player
-              key={player}
-              name={player}
-              addToTeam={() => this.addPlayerToTeam(player)}
-              inSelection={false}
-            />
-          )}
+          {this.filterPlayers(players)}
         </div>
         <CurrentSelection
           team={this.state.selected}
