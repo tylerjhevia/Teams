@@ -38,13 +38,15 @@ class Home extends React.Component<HomeProps, HomeState> {
     });
   }
 
-  searchForPlayer() {}
-
   render() {
     return (
       <div className="home-container">
         <h1>Home page</h1>
-        <input className="search" placeholder="Search for a player" />
+        <input
+          className="search"
+          placeholder="Search for a player"
+          onChange={(e: any) => this.setState({ search: e.target.value })}
+        />
         <div className="players">
           {players.map(player =>
             <Player
