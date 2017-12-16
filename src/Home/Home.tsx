@@ -8,6 +8,7 @@ import players from '../helpers/NBA-players.js';
 
 interface HomeState {
   selected: Array<string>;
+  search: string;
 }
 
 interface HomeProps {
@@ -18,7 +19,8 @@ class Home extends React.Component<HomeProps, HomeState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      selected: []
+      selected: [],
+      search: ''
     };
     this.addPlayerToTeam = this.addPlayerToTeam.bind(this);
     this.removePlayerFromTeam = this.removePlayerFromTeam.bind(this);
@@ -35,6 +37,8 @@ class Home extends React.Component<HomeProps, HomeState> {
       selected: this.state.selected.filter(teamMember => teamMember !== player)
     });
   }
+
+  searchForPlayer() {}
 
   render() {
     return (
