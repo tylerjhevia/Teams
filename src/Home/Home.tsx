@@ -40,6 +40,7 @@ class Home extends React.Component<HomeProps, HomeState> {
     return (
       <div className="home-container">
         <h1>Home page</h1>
+        <input className="search" placeholder="Search for a player" />
         <div className="players">
           {players.map(player =>
             <Player
