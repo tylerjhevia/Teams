@@ -2,6 +2,10 @@
   background-color: #eff6e1;
 }
 
+.home-container h1 {
+  background-color: #5a8391;
+}
+
 .players {
   align-items: center;
   color: #5a8391;

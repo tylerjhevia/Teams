@@ -58,7 +58,7 @@ class Home extends React.Component<HomeProps, HomeState> {
   render() {
     return (
       <div className="home-container">
-        <h1>Home page</h1>
+        <h1>Draft your team</h1>
         <input
           className="search"
           placeholder="Search for a player"
