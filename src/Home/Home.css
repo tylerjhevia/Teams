@@ -1,5 +1,10 @@
+.home-container {
+  background-color: #eff6e1;
+}
+
 .players {
   align-items: center;
+  color: #5a8391;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
