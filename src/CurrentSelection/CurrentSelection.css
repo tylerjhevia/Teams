@@ -28,7 +28,7 @@
   color: red;
 }
 
-.team-name {
+.current-selection .team-name {
   background: none;
   border: none;
   border-bottom: 1px solid white;
