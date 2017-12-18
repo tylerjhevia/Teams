@@ -4,6 +4,7 @@
 
 .home-container h1 {
   background-color: #5a8391;
+  padding: 5px;
 }
 
 .players {
@@ -31,20 +32,12 @@
 }
 
 .current-selection-arrow {
-  background-color: black;
+  background-color: #5b8390;
   bottom: 0;
+  color: #fc6059;
+  cursor: pointer;
+  font-size: 1.5vw;
   height: 25px;
   position: fixed;
   width: 50%;
 }
-
-animation: 1s slidein;
-background-color: rgba(50, 50, 50, 0.6);
-bottom: 0;
-color: white;
-font-weight: bold;
-height: 250px;
-margin: 0 auto;
-position: fixed;
-transition: 0.5s ease-in;
-width: 50%;
