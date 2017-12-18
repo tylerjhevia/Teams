@@ -8,6 +8,7 @@ interface CurrentSelectionProps {
   team: Array<string>;
   currentUser: CurrentUser;
   removePlayerFromTeam: Function;
+  toggleCurrentSelection: Function;
 }
 
 interface CurrentSelectionState {
@@ -84,31 +85,39 @@ class CurrentSelection extends React.Component<
   render() {
     return (
       <section className="current-selection">
-        <h3>Current selection:</h3>
-        <p className="error-text">
-          {this.state.error}
-        </p>
-        <input
-          className="team-name"
-          placeholder="Enter team name..."
-          onChange={(e: any) => this.setState({ teamName: e.target.value })}
-        />
-        <section className="selected-players">
-          {this.props.team.map((player, i) =>
-            <Player
-              key={i}
-              removePlayerFromTeam={this.props.removePlayerFromTeam}
-              name={player}
-              inSelection={true}
-            />
-          )}
-        </section>
         <button
-          className="create-team-button"
-          onClick={(): void | Promise<void> => this.postNewTeam()}
+          className="collapse"
+          onClick={() => this.props.toggleCurrentSelection()}
         >
-          Create Team
+          V
         </button>
+        <section className="team-info">
+          <h3>Current selection:</h3>
+          <p className="error-text">
+            {this.state.error}
+          </p>
+          <input
+            className="team-name"
+            placeholder="Enter team name..."
+            onChange={(e: any) => this.setState({ teamName: e.target.value })}
+          />
+          <section className="selected-players">
+            {this.props.team.map((player, i) =>
+              <Player
+                key={i}
+                removePlayerFromTeam={this.props.removePlayerFromTeam}
+                name={player}
+                inSelection={true}
+              />
+            )}
+          </section>
+          <button
+            className="create-team-button"
+            onClick={(): void | Promise<void> => this.postNewTeam()}
+          >
+            Create Team
+          </button>
+        </section>
       </section>
     );
   }

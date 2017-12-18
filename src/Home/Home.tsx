@@ -9,6 +9,7 @@ import players from '../helpers/NBA-players.js';
 interface HomeState {
   selected: Array<string>;
   search: string;
+  currentSelection: boolean;
 }
 
 interface HomeProps {
@@ -20,10 +21,12 @@ class Home extends React.Component<HomeProps, HomeState> {
     super(props);
     this.state = {
       selected: [],
-      search: ''
+      search: '',
+      currentSelection: true
     };
     this.addPlayerToTeam = this.addPlayerToTeam.bind(this);
     this.removePlayerFromTeam = this.removePlayerFromTeam.bind(this);
+    this.toggleCurrentSelection = this.toggleCurrentSelection.bind(this);
   }
 
   addPlayerToTeam(player: string): void {
@@ -55,6 +58,31 @@ class Home extends React.Component<HomeProps, HomeState> {
     );
   }
 
+  renderCurrentSelection() {
+    if (this.state.currentSelection) {
+      return (
+        <CurrentSelection
+          team={this.state.selected}
+          removePlayerFromTeam={this.removePlayerFromTeam}
+          toggleCurrentSelection={this.toggleCurrentSelection}
+        />
+      );
+    } else {
+      return (
+        <div
+          className="current-selection-arrow"
+          onClick={() => this.toggleCurrentSelection()}
+        >
+          ^
+        </div>
+      );
+    }
+  }
+
+  toggleCurrentSelection() {
+    this.setState({ currentSelection: !this.state.currentSelection });
+  }
+
   render() {
     return (
       <div className="home-container">
@@ -69,10 +97,7 @@ class Home extends React.Component<HomeProps, HomeState> {
         <div className="players">
           {this.filterPlayers(players)}
         </div>
-        <CurrentSelection
-          team={this.state.selected}
-          removePlayerFromTeam={this.removePlayerFromTeam}
-        />
+        {this.renderCurrentSelection()}
       </div>
     );
   }

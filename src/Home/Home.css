@@ -29,3 +29,22 @@
 .search {
   text-indent: 2px;
 }
+
+.current-selection-arrow {
+  background-color: black;
+  bottom: 0;
+  height: 25px;
+  position: fixed;
+  width: 50%;
+}
+
+animation: 1s slidein;
+background-color: rgba(50, 50, 50, 0.6);
+bottom: 0;
+color: white;
+font-weight: bold;
+height: 250px;
+margin: 0 auto;
+position: fixed;
+transition: 0.5s ease-in;
+width: 50%;

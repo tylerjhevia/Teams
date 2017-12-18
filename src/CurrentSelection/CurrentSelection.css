@@ -1,14 +1,10 @@
 .current-selection {
-  align-items: center;
   animation: 1s slidein;
   background-color: rgba(50, 50, 50, 0.6);
   bottom: 0;
   color: white;
-  display: flex;
-  flex-direction: column;
   font-weight: bold;
   height: 250px;
-  justify-content: center;
   margin: 0 auto;
   position: fixed;
   transition: 0.5s ease-in;
@@ -22,6 +18,14 @@
   to {
     margin-bottom: 0;
   }
+}
+
+.team-info {
+  align-items: center;
+  display: flex;
+  height: 90%;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .error-text {
@@ -58,4 +62,12 @@
   color: white;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+}
+
+.collapse {
+  background-color: black;
+  color: red;
+  cursor: pointer;
+  height: 10%;
+  width: 100%;
 }
