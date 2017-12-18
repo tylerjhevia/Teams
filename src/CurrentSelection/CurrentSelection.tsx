@@ -9,6 +9,7 @@ interface CurrentSelectionProps {
   currentUser: CurrentUser;
   removePlayerFromTeam: Function;
   toggleCurrentSelection: Function;
+  clearSelectedPlayers: Function;
 }
 
 interface CurrentSelectionState {
@@ -39,7 +40,12 @@ class CurrentSelection extends React.Component<
   }
 
   postNewTeam(): Promise<void> | void {
-    const { team, currentUser } = this.props;
+    const {
+      team,
+      currentUser,
+      clearSelectedPlayers,
+      toggleCurrentSelection
+    } = this.props;
     const player_1 = team[0];
     const player_2 = team[1];
     const player_3 = team[2];
@@ -58,6 +64,10 @@ class CurrentSelection extends React.Component<
 
     if (this.checkIfValidTeam(newTeam)) {
       this.setState({ error: '' });
+
+      clearSelectedPlayers();
+      toggleCurrentSelection();
+
       return fetch('http://localhost:3001/api/v1/teams', {
         method: 'POST',
         body: JSON.stringify(newTeam),
