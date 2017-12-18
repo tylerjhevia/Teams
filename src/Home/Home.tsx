@@ -27,6 +27,7 @@ class Home extends React.Component<HomeProps, HomeState> {
     this.addPlayerToTeam = this.addPlayerToTeam.bind(this);
     this.removePlayerFromTeam = this.removePlayerFromTeam.bind(this);
     this.toggleCurrentSelection = this.toggleCurrentSelection.bind(this);
+    this.clearSelectedPlayers = this.clearSelectedPlayers.bind(this);
   }
 
   addPlayerToTeam(player: string): void {
@@ -65,6 +66,7 @@ class Home extends React.Component<HomeProps, HomeState> {
           team={this.state.selected}
           removePlayerFromTeam={this.removePlayerFromTeam}
           toggleCurrentSelection={this.toggleCurrentSelection}
+          clearSelectedPlayers={this.clearSelectedPlayers}
         />
       );
     } else {
@@ -79,8 +81,12 @@ class Home extends React.Component<HomeProps, HomeState> {
     }
   }
 
-  toggleCurrentSelection() {
+  toggleCurrentSelection(): void {
     this.setState({ currentSelection: !this.state.currentSelection });
+  }
+
+  clearSelectedPlayers(): void {
+    this.setState({ selected: [] });
   }
 
   render() {
