@@ -8,11 +8,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #222;
   height: 150px;
@@ -22,4 +17,12 @@
 
 .App-intro {
   font-size: large;
+}
+
+.collapsed-sidebar {
+  background-color: red;
+  height: 10vw;
+  position: fixed;
+  right: 0px;
+  width: 5vw;
 }

@@ -6,11 +6,11 @@ import { CurrentUser } from '../Teams/Teams';
 interface SidebarProps {
   currentUser: CurrentUser;
   storeCurrentUser: Function;
+  toggleSidebar: Function;
 }
 
 const Sidebar = (props: SidebarProps) => {
-  const { currentUser, storeCurrentUser } = props;
-
+  const { currentUser, storeCurrentUser, toggleSidebar } = props;
   return (
     <section className="sidebar-container">
       <p className="current-user">
@@ -25,6 +25,9 @@ const Sidebar = (props: SidebarProps) => {
       >
         Log out
       </p>
+      <button className="collapse" onClick={() => toggleSidebar()}>
+        Collapse
+      </button>
     </section>
   );
 };
