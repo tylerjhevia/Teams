@@ -44,7 +44,9 @@ class App extends React.Component<AppProps, {}> {
           : <div
               className="collapsed-sidebar"
               onClick={() => this.props.toggleSidebar()}
-            />}
+            >
+              <p className="vertical-text">Expand</p>
+            </div>}
         {this.checkIfUserIsLoggedIn()}
         <Route exact path="/" component={Welcome} />
         <Route exact path="/home" component={Home} />
