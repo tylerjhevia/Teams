@@ -20,9 +20,21 @@
 }
 
 .collapsed-sidebar {
-  background-color: red;
-  height: 10vw;
+  background-color: #fa615d;
+  height: 20vh;
   position: fixed;
   right: 0px;
-  width: 5vw;
+  text-orientation: vertical;
+  top: 40vh;
+  width: 2vw;
+}
+
+.vertical-text {
+  color: #eef5dc;
+  transform: rotate(90deg);
+  transform-origin: top 0 left 30;
+}
+
+.vertical-text:hover {
+  cursor: pointer;
 }
