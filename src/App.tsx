@@ -11,6 +11,8 @@ import { CurrentUser } from './Teams/Teams';
 interface AppProps {
   currentUser: CurrentUser;
   storeCurrentUser: Function;
+  toggleSidebar: Function;
+  sidebar: boolean;
 }
 
 class App extends React.Component<AppProps, {}> {
@@ -37,7 +39,12 @@ class App extends React.Component<AppProps, {}> {
   render() {
     return (
       <div className="App">
-        {this.props.currentUser.id ? <Sidebar /> : null}
+        {this.props.currentUser.id && !this.props.sidebar
+          ? <Sidebar />
+          : <div
+              className="collapsed-sidebar"
+              onClick={() => this.props.toggleSidebar()}
+            />}
         {this.checkIfUserIsLoggedIn()}
         <Route exact path="/" component={Welcome} />
         <Route exact path="/home" component={Home} />
